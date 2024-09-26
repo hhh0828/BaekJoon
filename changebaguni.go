@@ -1,3 +1,6 @@
+////Reference code - Baekjoon no.1 code. c++ code changed chanaged to Go.
+//// not mine.
+
 package main
 
 import (
@@ -108,3 +111,85 @@ func main() {
 	}
 	Flush()
 }
+
+//내 코드
+/*
+func main() {
+	defer writer.Flush()
+
+	var basket []int
+
+	input, _ := io.ReadAll(reader)
+	commands := strings.Split(string(input), "\n")
+
+
+	N, _ := strconv.Atoi(commands[0])
+
+
+	for i := 1; i <= N; i++ {
+		command := commands[i]
+		if len(command) > 1 && command[0] == '1' {
+
+			x, _ := strconv.Atoi(command[2:])
+			Stack(&basket, x)
+		} else {
+
+			ms, _ := strconv.Atoi(command)
+			if ms == 5 {
+				if Isempty(&basket) {
+					writer.WriteString("-1\n")
+				} else {
+					writer.WriteString(strconv.Itoa(basket[len(basket)-1]) + "\n")
+				}
+			} else if ms == 3 {
+				writer.WriteString(strconv.Itoa(CheckInt(&basket)) + "\n")
+			} else if ms == 4 {
+				writer.WriteString(strconv.Itoa(Isemp(&basket)) + "\n")
+			} else if ms == 2 {
+				writer.WriteString(strconv.Itoa(Pop(&basket)) + "\n")
+			}
+		}
+	}
+}
+
+var (
+	reader *bufio.Reader
+	writer *bufio.Writer
+)
+
+func init() {
+	reader = bufio.NewReaderSize(os.Stdin, 9000000)
+	writer = bufio.NewWriter(os.Stdout)
+}
+
+func Stack(basket *[]int, thing int) *[]int {
+	*basket = append(*basket, thing)
+	return basket
+}
+
+func Pop(basket *[]int) (thing int) {
+	if Isempty(basket) {
+		return -1
+	}
+	top := len(*basket) - 1
+	thing = (*basket)[top]
+	*basket = (*basket)[:top] //Remove Top side
+	return thing
+}
+
+func Isempty(basket *[]int) bool {
+	return len(*basket) == 0
+}
+
+func Isemp(basket *[]int) int {
+	if len(*basket) == 0 {
+		return 1
+	} else {
+		return 0
+	}
+}
+
+func CheckInt(basket *[]int) int {
+	return len(*basket)
+}
+*/
