@@ -2,12 +2,10 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strconv"
 )
 
-// 2XN-1 번째 줄까지 출력
 func main() {
 	defer Writer.Flush()
 	N := Readint()
@@ -16,37 +14,30 @@ func main() {
 	mid := lines / 2
 
 	// 첫 번째 부분: 별이 늘어나는 삼각형
-	for i := 1; i <= mid+1; i++ {
-		for j := 0; j < lines; j++ {
-			if (mid-i < j && j < mid+i) || j == mid {
-				fmt.Print("*")
-			} else {
-				fmt.Print(" ")
-			}
+	for i := 0; i <= mid; i++ {
+		// 왼쪽 공백 출력
+		for j := 0; j < mid-i; j++ {
+			Writer.WriteString(" ")
 		}
-		fmt.Print("\n")
+		// 별 출력
+		for j := 0; j < 2*i+1; j++ {
+			Writer.WriteString("*")
+		}
+		Writer.WriteString("\n")
 	}
 
-	// 두 번째 부분: 별이 줄어드는 삼각형
-	for i := 0; i < mid; i++ {
-		for j := 0; j < mid; j++ {
-			if j > i {
-				fmt.Print("*")
-			} else {
-				fmt.Print(" ")
-			}
-		}
-		for j := mid; j >= 0; j-- {
-			if j > i {
-				fmt.Print("*")
-			} else {
-				fmt.Print(" ")
-			}
+	for i := mid - 1; i >= 0; i-- {
+
+		for j := 0; j < mid-i; j++ {
+			Writer.WriteString(" ")
 		}
 
-		// 마지막 줄에서는 개행 문자를 출력하지 않음
-		if i != mid-1 {
-			fmt.Print("\n")
+		for j := 0; j < 2*i+1; j++ {
+			Writer.WriteString("*")
+		}
+
+		if i > 0 {
+			Writer.WriteString("\n")
 		}
 	}
 }
