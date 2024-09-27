@@ -82,7 +82,7 @@ func init() {
 
 func Readline() []byte {
 	byt, _ := Reader.ReadBytes(13)
-	fmt.Println(byt)
+	//fmt.Println(byt)
 	return byt
 }
 
