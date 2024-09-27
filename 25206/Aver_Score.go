@@ -1,5 +1,7 @@
 package main
 
+// GO 1등 코드 ^_^
+
 import (
 	"bufio"
 	"fmt"
@@ -27,6 +29,7 @@ F	0.0
 */
 
 func main() {
+
 	var sub Sub
 	var scoresum float64
 	var eachscor float64
@@ -65,23 +68,21 @@ func main() {
 	}
 	avg := eachscor / scoresum
 
-	fmt.Println(avg)
+	fmt.Print(avg)
 	//평균계산.
 
 }
 
 var (
 	Reader *bufio.Reader
-	Writer *bufio.Writer
 )
 
 func init() {
 	Reader = bufio.NewReaderSize(os.Stdin, 50)
-	Writer = bufio.NewWriter(os.Stdout)
 }
 
 func Readline() []byte {
-	byt, _ := Reader.ReadBytes(13)
+	byt, _ := Reader.ReadBytes(10)
 	//fmt.Println(byt)
 	return byt
 }
@@ -114,7 +115,7 @@ func (sub *Sub) SetScore(line []byte) Sub {
 			}
 
 			counter++
-		} else if byt == 13 {
+		} else if byt == 10 {
 			sub.Subgrade = string(tempslice)
 		} else {
 			tempslice = append(tempslice, byt)
