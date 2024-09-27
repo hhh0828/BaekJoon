@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"os"
 )
 
@@ -13,7 +12,7 @@ var (
 )
 
 func init() {
-	Reader = bufio.NewReaderSize(os.Stdin, 1)
+	Reader = bufio.NewReaderSize(os.Stdin, 100)
 	Writer = bufio.NewWriter(os.Stdout)
 }
 
@@ -35,8 +34,6 @@ func Reversing(str []byte) []byte {
 	for i := len(str) - 1; i >= 0; i-- {
 		reversingstr = append(reversingstr, str[i])
 	}
-	fmt.Println(str)
-	fmt.Println(reversingstr)
 	return reversingstr
 }
 
